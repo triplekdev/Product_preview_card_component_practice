@@ -1,7 +1,7 @@
 @layer global, components, utilities;
 
 @layer global {
-
+	
 	/* montserrat-500 - latin */
 	@font-face {
 		font-display: swap;
@@ -24,14 +24,14 @@
 		/* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 	}
 	
-	/* fraunces-regular - latin */
+	/* fraunces-700 - latin */
 	@font-face {
 		font-display: swap;
 		/* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
 		font-family: 'Fraunces';
 		font-style: normal;
-		font-weight: 400;
-		src: url('../fonts/fraunces-v38-latin-regular.woff2') format('woff2');
+		font-weight: 700;
+		src: url('fonts/fraunces-v38-latin-700.woff2') format('woff2');
 		/* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 	}
 	
@@ -39,12 +39,13 @@
 		/* || FONT SIZES */
 		--FS-14: calc(14 / 16 * 1rem);
 		--FS-16: calc(16 / 16 * 1rem);
+		--FS-17: calc(17 / 16 * 1rem);
 		--FS-28: calc(28 / 16 * 1rem);
-		--FS-30: calc(30 / 16 * 1rem);
+		--FS-38: calc(38 / 16 * 1rem);
 		
-		--FS-PARAGRAPH: var(--FS-14);
-		--FS-H3: var(--FS-16);
-		--FS-TITLE: var(--FS-28);
+		--FS-PARAGRAPH: var(--FS-16);
+		--FS-H3: var(--FS-17);
+		--FS-TITLE: var(--FS-38);
 		
 		@media (width >=calc(600 / 16 * 1rem)) {
 			--FS-PARAGRAPH: var(--FS-16);
@@ -63,14 +64,15 @@
 		--C-WHITE: hsl(0, 0%, 100%);
 		
 		/* || SPECIFIED */
-		--C-BODY-BG: var(--CREAM);
-		--C-MAIN-BG: var(--WHITE);
+		--C-BODY-BG: var(--C-CREAM);
+		--C-MAIN-BG: var(--C-WHITE);
 		--C-DIS-PRICE: var(--C-GREEN-500);
 		--C-OLD-PRICE: var(--C-GREY);
 		--C-CONTENT: var(--C-GREY);
 		--C-MAIN-TITLE: var(--C-BLACK);
-		--C-MAIN-H3: var(--C-BLACK);
-		--C-BUTTON-BG: var(--C-GREEN-700);
+		--C-MAIN-H3: var(--C-GREY);
+		--C-BUTTON-BG-HOVER: VAR(--C-GREEN-700);
+		--C-BUTTON-BG: VAR(--C-GREEN-500);
 		--C-BUTTON-TEXT: var(--C-WHITE);
 	}
 	
@@ -99,7 +101,7 @@
 		align-items: center;
 		width: 100vw;
 		height: 100vh;
-		background: var(--C-BODY-BG);
+		background-color: var(--C-BODY-BG);
 	}
 	
 	h1 {
@@ -116,32 +118,141 @@
 
 @layer components {
 	.main {
+		display: flex;
+		flex-flow: column;
+		gap: calc(10 / 16 * 1rem);
+		background: var(--C-MAIN-BG);
+		justify-content: center;
+		align-items: center;
+		max-width: calc(100% - calc(48 / 16 * 1rem));
+		border-radius: 12px;
+		
+		@media (width >=calc(600 / 16 * 1rem)) {
+			flex-flow: row;
+		}
+		
 		.main__product-img-container {
+			max-width: 100%;
+			
 			.main__figure {
-				.main__product-img {}
+				.main__product-img {
+					width: 100%;
+					border-radius: 12px 12px 0 0;
+
+					@media (width >=calc(600 / 16 * 1rem)) {
+						max-width: calc(310 / 16 * 1rem);
+						border-radius: 12px 0 0 12px;
+					}
+				}
 			}
 		}
 	}
 	
 	.main__text {
-		.main__h3 {}
+		display: flex;
+		flex-flow: column;
+		max-width: 100%;
+		padding: calc(36 / 16 * 1rem);
+		justify-content: space-between;
+		gap: calc(20 / 16 * 1rem);
+		height: calc(450 / 16 * 1rem);
 		
-		.main__title {}
+		@media (width >=calc(600 / 16 * 1rem)) {
+			max-width: calc(310 / 16 * 1rem);
+			padding: calc(20 / 16 * 1rem) calc(30 / 16 * 1rem);
+		}
 		
-		.content {}
+		.main__h3 {
+			color: var(--C-MAIN-H3);
+			font-family: "Montserrat";
+			letter-spacing: 4px;
+			text-transform: uppercase;
+			font-weight: 500;
+			font-size: var(--FS-H3);
+		}
+		
+		.main__title {
+			color: var(--C-MAIN-TITLE);
+			font-family: "Fraunces";
+			font-size: var(--FS-TITLE);
+			font-weight: 700;
+		}
+		
+		.content {
+			color: var(--C-MAIN-H3);
+			font-family: "Montserrat";
+			line-height: 1.7;
+			font-weight: 500;
+			font-size: var(--FS-PARAGRAPH);
+		}
 		
 		.prices {
-			.discount-price {}
+			display: flex;
+			flex-flow: row;
+			gap: calc(20 / 16 * 1rem);
+			align-items: center;
 			
-			.old-price {}
+			.discount-price {
+				font-family: "Fraunces";
+				font-size: var(--FS-TITLE);
+				font-weight: 700;
+				color: var(--C-DIS-PRICE);
+			}
+			
+			.old-price {
+				color: var(--C-GREY);
+				font-family: "Montserrat";
+				text-decoration-line: line-through;
+			}
 		}
 		
 		.button {
+			background: var(--C-BUTTON-BG);
+			font-family: "Montserrat";
+			font-weight: 700;
+			padding: calc(16 / 16 * 1rem);
+			border: none;
+			border-radius: calc(10 / 16 * 1rem);
+			
+			&:hover {
+				background: var(--C-BUTTON-BG-HOVER);
+				cursor: pointer;
+				transition: background-color 0.5s ease-in;
+			}
+			
 			.add-to-cart {
-				.cart-icon {}
+				color: var(--C-BUTTON-TEXT);
+				display: flex;
+				flex-flow: row;
+				align-items: center;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: calc(10 / 16 * 1rem);
+				font-size: var(--FS-16);
+				
+				.cart-icon {
+					width: calc(16 / 16 * 1rem);
+				}
 			}
 		}
 	}
+	
+	.attribution {
+		font-size: 11px;
+		text-align: center;
+	}
+	.footer {
+	position: absolute;
+	bottom: 0;
+	.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
+}
 }
 
 @layer utilities {
@@ -162,4 +273,6 @@
 			border: 1px solid;
 		}
 	}
+	
+
 }
