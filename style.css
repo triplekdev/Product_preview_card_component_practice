@@ -102,6 +102,7 @@
 		width: 100vw;
 		height: 100vh;
 		background-color: var(--C-BODY-BG);
+		position: relative;
 	}
 	
 	h1 {
@@ -142,6 +143,7 @@
 					@media (width >=calc(600 / 16 * 1rem)) {
 						max-width: calc(310 / 16 * 1rem);
 						border-radius: 12px 0 0 12px;
+						height: calc(500 / 16 * 1rem);
 					}
 				}
 			}
@@ -155,7 +157,7 @@
 		padding: calc(36 / 16 * 1rem);
 		justify-content: space-between;
 		gap: calc(20 / 16 * 1rem);
-		height: calc(450 / 16 * 1rem);
+		min-height: calc(430 / 16 * 1rem);
 		
 		@media (width >=calc(600 / 16 * 1rem)) {
 			max-width: calc(310 / 16 * 1rem);
@@ -236,23 +238,6 @@
 			}
 		}
 	}
-	
-	.attribution {
-		font-size: 11px;
-		text-align: center;
-	}
-	.footer {
-	position: absolute;
-	bottom: 0;
-	.attribution {
-	font-size: 11px;
-	text-align: center;
-}
-
-.attribution a {
-	color: hsl(228, 45%, 44%);
-}
-}
 }
 
 @layer utilities {
@@ -274,5 +259,20 @@
 		}
 	}
 	
+	.attribution {
+		font-size: 11px;
+		text-align: center;
+	}
+	.footer {
+	position: absolute;
+	bottom: 0;
+	.attribution {
+	font-size: 11px;
+	text-align: center;
+}
 
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
+}
 }
