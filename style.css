@@ -1,0 +1,129 @@
+@layer global, components, utilities;
+
+@layer global {
+	/* montserrat-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  src: url('fonts/montserrat-v31-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* montserrat-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('fonts/montserrat-v31-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* fraunces-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/fraunces-v38-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+:root {
+/* || FONT SIZES */
+	--FS-14: calc(14 / 16 * 1rem);
+	--FS-16: calc(16 / 16 * 1rem);
+	--FS-28: calc(28 / 16 * 1rem);
+	--FS-30: calc(30 / 16 * 1rem);
+	
+	--FS-PARAGRAPH: var(--FS-14);
+	--FS-H3: var(--FS-16);
+	--FS-TITLE: var(--FS-28);
+	
+    @media (width >= calc(600 / 16 * 1rem)) {
+		--FS-PARAGRAPH: var(--FS-16);
+	}
+	
+/* || COLORS */
+	
+	/* || PRIMARY */
+	--C-GREEN-500: hsl(158, 36%, 37%);
+	--C-GREEN-700: hsl(158, 42%, 18%);
+
+	/* || NEUTRAL */
+	--C-BLACK: hsl(212, 21%, 14%);
+	--C-GREY: hsl(228, 12%, 48%);
+	--C-CREAM: hsl(30, 38%, 92%);
+	--C-WHITE: hsl(0, 0%, 100%);
+	
+	/* || SPECIFIED */ 
+	--C-BODY-BG: var(--CREAM);
+	--C-MAIN-BG: var(--WHITE);
+	--C-DIS-PRICE: var(--C-GREEN-500);
+	--C-OLD-PRICE: var(--C-GREY);
+	--C-CONTENT: var(--C-GREY);
+	--C-MAIN-TITLE: var(--C-BLACK);
+	--C-MAIN-H3: var(--C-BLACK);
+	--C-BUTTON-BG: var(--C-GREEN-700);
+	--C-BUTTON-TEXT: var(--C-WHITE);
+}
+
+/* || RESET */
+*,*::after, *::before {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+/* || MAIN GLOBAL STYLES */
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background: var(--C-BODY-BG);
+}
+
+h1 {
+	line-height: 1.1;
+	font-size: var(--FS-TITLE);
+	font-weight: 700;
+}
+
+p {
+	font-size: var(--FS-PARAGRAPH);
+	font-weight: 500;
+}
+}
+
+@layer components {
+	
+}
+
+@layer utilities {
+		.offscreen {
+		position: absolute;
+		left: -10000px;
+		top: auto;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		
+		&.skip:focus {
+			left: 0;
+			width: auto;
+			height: auto;
+			background: #fff;
+			padding: 10px;
+			border: 1px solid;
+		}
+	}
+}
